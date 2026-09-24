@@ -1,0 +1,81 @@
+<!doctype html>
+<html lang="it">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#123f43">
+  <meta name="description" content="Una mappa che segue il tuo viaggio e racconta i luoghi che attraversi.">
+  <title>Viaggio Narratore</title>
+  <link rel="manifest" href="./manifest.webmanifest">
+  <link rel="icon" href="./icon.svg" type="image/svg+xml">
+  <link rel="apple-touch-icon" href="./apple-touch-icon.png">
+  <link rel="preconnect" href="https://tile.openstreetmap.org">
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin="">
+  <link rel="stylesheet" href="./style.css">
+  <script defer src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
+  <script type="module" src="./app.js"></script>
+</head>
+<body>
+  <div class="app-shell">
+    <header class="topbar">
+      <div class="brand-mark" aria-hidden="true"><img src="./icon.svg" alt=""></div>
+      <div class="brand-copy"><strong>Viaggio Narratore</strong><span>Ogni luogo ha una storia</span></div>
+      <span class="status-pill" id="status-pill"><span class="status-dot"></span><span id="status-text">GPS spento</span></span>
+    </header>
+
+    <main>
+      <section class="map-panel" aria-label="Mappa del viaggio">
+        <div id="map" role="application" aria-label="Mappa interattiva OpenStreetMap"></div>
+        <div class="map-shade" aria-hidden="true"></div>
+        <div class="map-label"><span class="eyebrow">IL TUO VIAGGIO, IN TEMPO REALE</span><strong id="map-headline">La strada comincia qui.</strong></div>
+        <div class="map-place" id="map-place" role="status" aria-live="polite" aria-atomic="true" hidden>
+          <div class="map-place-top"><span id="map-place-kicker">COMUNE ATTUALE</span><span id="map-voice-state">Voce attiva</span></div>
+          <strong id="map-place-name"></strong>
+          <span class="map-place-detail" id="map-place-detail"></span>
+        </div>
+        <a class="satellite-link" id="satellite-link" href="https://www.google.com/maps/@?api=1&amp;map_action=map&amp;center=42.7%2C12.7&amp;zoom=6&amp;basemap=satellite" target="_blank" rel="noopener noreferrer" aria-label="Apri la vista satellitare in Google Maps">Satellite ↗</a>
+        <button class="map-recenter" id="recenter-button" type="button" aria-label="Centra la mappa sulla mia posizione" title="Centra sulla posizione" hidden>◎</button>
+      </section>
+
+      <section class="place-panel" aria-labelledby="place-title">
+        <div class="panel-handle" aria-hidden="true"></div>
+        <div class="place-topline"><span class="eyebrow" id="place-eyebrow">PRONTO A PARTIRE?</span><span class="place-index" id="place-index">01 / 03</span></div>
+        <h1 id="place-title">Dove ti porterà il viaggio?</h1>
+        <p class="place-description" id="place-description">Attiva la posizione: la mappa ti seguirà e una voce ti dirà quando entri in un nuovo comune.</p>
+        <div class="action-row" id="start-actions">
+          <button class="button button-primary" id="start-button" type="button"><span aria-hidden="true">⌖</span> Inizia il viaggio</button>
+          <button class="button button-secondary" id="demo-button" type="button">Prova un esempio</button>
+        </div>
+        <div class="travel-controls" id="travel-controls" hidden>
+          <div class="travel-meta"><span class="live-indicator" id="travel-indicator"></span><span id="travel-status">In attesa del GPS</span></div>
+          <button class="text-button" id="stop-button" type="button">Termina</button>
+        </div>
+        <div id="feedback" class="feedback" role="status" aria-live="polite" hidden></div>
+
+        <div class="content-area" id="content-area" hidden>
+          <div class="section-divider"></div>
+          <div class="section-heading"><span class="eyebrow">SCOPRI IL LUOGO</span><div class="speech-controls"><button class="ask-button" id="ask-button" type="button" title="Chiedi informazioni a voce">🎙 <span>Chiedi</span></button><button class="voice-button" id="voice-button" type="button" aria-pressed="true" title="Attiva o disattiva gli avvisi vocali">◖)) <span>Voce attiva</span></button></div></div>
+          <p class="voice-hint" id="voice-hint">Puoi dire: “Dove mi trovo?”, “La sua storia” o “Cosa vedere?”.</p>
+          <div class="tabs" role="tablist" aria-label="Informazioni sul luogo">
+            <button class="tab active" id="tab-see" type="button" role="tab" aria-selected="true" aria-controls="panel-see">Cosa vedere</button>
+            <button class="tab" id="tab-story" type="button" role="tab" aria-selected="false" aria-controls="panel-story">La sua storia</button>
+          </div>
+          <div class="tab-panel" id="panel-see" role="tabpanel" aria-labelledby="tab-see"><div class="loading-copy">Cerco luoghi interessanti nei dintorni…</div></div>
+          <div class="tab-panel" id="panel-story" role="tabpanel" aria-labelledby="tab-story" hidden><div class="loading-copy">Cerco la storia del comune…</div></div>
+        </div>
+        <footer class="app-footer"><p>La posizione serve a mostrarti il comune attuale. Non viene salvata dall’app. <a href="#informazioni" id="info-link">Come funziona</a></p></footer>
+      </section>
+    </main>
+  </div>
+
+  <dialog id="info-dialog" class="info-dialog" aria-labelledby="info-title">
+    <form method="dialog"><button class="dialog-close" aria-label="Chiudi" type="submit">×</button></form>
+    <span class="eyebrow">IL VIAGGIO, SENZA COMPLICAZIONI</span>
+    <h2 id="info-title">Come funziona</h2>
+    <p>Con il tuo permesso, il browser legge il GPS mentre questa pagina è aperta. La voce annuncia automaticamente i nuovi comuni. Una località viene aggiunta solo se la fonte la riconosce come frazione di quel comune. Puoi disattivare gli avvisi e fermare il monitoraggio in qualsiasi momento.</p>
+    <p>La mappa usa <a href="https://www.openstreetmap.org/copyright" target="_blank" rel="noopener noreferrer">OpenStreetMap</a>. Il browser invia le coordinate attuali a <a href="https://www.bigdatacloud.com/free-api/free-reverse-geocode-to-city-api" target="_blank" rel="noopener noreferrer">BigDataCloud</a> per trovare il comune e a <a href="https://it.wikipedia.org/" target="_blank" rel="noopener noreferrer">Wikipedia</a> per trovare luoghi vicini. L’app non salva la posizione sul dispositivo né crea una cronologia dei viaggi.</p>
+    <p>Il tasto “Chiedi” usa il microfono solo dopo un tuo tocco, se il browser supporta il riconoscimento vocale; il browser potrebbe usare un servizio esterno per trascrivere la voce. La vista satellitare si apre in Google Maps, mentre questa app mantiene la sua mappa OpenStreetMap. Per il GPS serve HTTPS. Se chiudi l’app o passi a un’altra app, il monitoraggio può interrompersi: riaprila per riprendere.</p>
+    <button class="button button-primary dialog-done" id="dialog-done" type="button">Ho capito</button>
+  </dialog>
+</body>
+</html>

@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" role="img" aria-labelledby="title">
+  <title id="title">Viaggio Narratore: segnaposto e voce</title>
+  <rect width="512" height="512" rx="112" fill="#123f43"/>
+  <path d="M207 91c-76 0-138 61-138 137 0 103 138 244 138 244s138-141 138-244c0-76-62-137-138-137Z" fill="#f6e7c4"/>
+  <circle cx="207" cy="227" r="68" fill="#123f43"/>
+  <path d="m207 178 17 32 33 17-33 17-17 32-17-32-33-17 33-17Z" fill="#e49a72"/>
+  <path d="M341 163c23 17 38 40 38 66s-15 49-38 66M370 125c38 27 62 64 62 104s-24 77-62 104" fill="none" stroke="#f6e7c4" stroke-width="19" stroke-linecap="round"/>
+</svg>
