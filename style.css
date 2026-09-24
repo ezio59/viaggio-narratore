@@ -24,6 +24,7 @@ main { display: grid; grid-template-columns: minmax(0, 1.15fr) minmax(360px, .85
 .map-panel { position: relative; min-height: 560px; overflow: hidden; background: #c8d7cf; }
 #map { position: absolute; inset: 0; z-index: 1; }
 .map-shade { position: absolute; inset: 0 0 auto; height: 145px; background: linear-gradient(#123f4390, transparent); pointer-events: none; z-index: 400; }
+.map-warning { position: absolute; z-index: 460; left: 17px; right: 17px; top: 48%; transform: translateY(-50%); max-width: 420px; margin: auto; padding: 14px 17px; border-radius: 13px; background: #fffdf6f5; color: #18464a; font-size: 13px; line-height: 1.4; text-align: center; box-shadow: 0 7px 25px #123f4333; }
 .map-label { position: absolute; z-index: 401; top: 29px; left: clamp(22px, 4vw, 50px); right: 22px; display: flex; flex-direction: column; gap: 7px; color: white; pointer-events: none; text-shadow: 0 1px 7px #17363877; }
 .eyebrow { font-size: 10px; font-weight: 700; letter-spacing: .18em; line-height: 1.4; }
 .map-label .eyebrow { color: #fcf4de; }
