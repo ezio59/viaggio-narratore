@@ -13,7 +13,7 @@
   <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin="">
   <link rel="stylesheet" href="./style.css?v=20260924-2">
   <script defer src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
-  <script type="module" src="./app.js?v=20260924-2"></script>
+  <script type="module" src="./app.js?v=20260924-3"></script>
 </head>
 <body>
   <div class="app-shell">
@@ -33,7 +33,7 @@
           <strong id="map-place-name"></strong>
           <span class="map-place-detail" id="map-place-detail"></span>
         </div>
-        <a class="satellite-link" id="satellite-link" href="https://www.google.com/maps/@?api=1&amp;map_action=map&amp;center=42.7%2C12.7&amp;zoom=6&amp;basemap=satellite" target="_blank" rel="noopener noreferrer" aria-label="Apri la vista satellitare in Google Maps">Satellite ↗</a>
+        <a class="satellite-link" id="satellite-link" href="https://www.google.com/maps/@?api=1&amp;map_action=map&amp;center=42.7%2C12.7&amp;zoom=6&amp;basemap=satellite" target="_blank" rel="noopener noreferrer" aria-label="Apri la vista satellitare in Google Maps; il viaggio va in pausa finché non torni all’app" title="Apre Google Maps: il viaggio va in pausa">Satellite ↗</a>
         <button class="map-recenter" id="recenter-button" type="button" aria-label="Centra la mappa sulla mia posizione" title="Centra sulla posizione" hidden>◎</button>
       </section>
 
@@ -55,7 +55,7 @@
         <div class="content-area" id="content-area" hidden>
           <div class="section-divider"></div>
           <div class="section-heading"><span class="eyebrow">SCOPRI IL LUOGO</span><div class="speech-controls"><button class="ask-button" id="ask-button" type="button" title="Chiedi informazioni a voce">🎙 <span>Chiedi</span></button><button class="voice-button" id="voice-button" type="button" aria-pressed="true" title="Attiva o disattiva gli avvisi vocali">◖)) <span>Voce attiva</span></button></div></div>
-          <p class="voice-hint" id="voice-hint">Puoi dire: “Dove mi trovo?”, “La sua storia” o “Cosa vedere?”.</p>
+          <p class="voice-hint" id="voice-hint">Tocca una scheda per ascoltarla, oppure dì: “Dove mi trovo?”, “La sua storia” o “Cosa vedere?”.</p>
           <div class="tabs" role="tablist" aria-label="Informazioni sul luogo">
             <button class="tab active" id="tab-see" type="button" role="tab" aria-selected="true" aria-controls="panel-see">Cosa vedere</button>
             <button class="tab" id="tab-story" type="button" role="tab" aria-selected="false" aria-controls="panel-story">La sua storia</button>
