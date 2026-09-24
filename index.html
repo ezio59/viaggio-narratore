@@ -10,10 +10,10 @@
   <link rel="icon" href="./icon.svg" type="image/svg+xml">
   <link rel="apple-touch-icon" href="./apple-touch-icon.png">
   <link rel="preconnect" href="https://tile.openstreetmap.org">
-  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin="">
-  <link rel="stylesheet" href="./style.css?v=20260924-2">
-  <script defer src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
-  <script type="module" src="./app.js?v=20260924-3"></script>
+  <link rel="stylesheet" href="./vendor/leaflet.css">
+  <link rel="stylesheet" href="./style.css?v=20260924-3">
+  <script defer src="./vendor/leaflet.js"></script>
+  <script type="module" src="./app.js?v=20260924-4"></script>
 </head>
 <body>
   <div class="app-shell">
@@ -27,6 +27,7 @@
       <section class="map-panel" aria-label="Mappa del viaggio">
         <div id="map" role="application" aria-label="Mappa interattiva OpenStreetMap"></div>
         <div class="map-shade" aria-hidden="true"></div>
+        <div id="map-warning" class="map-warning" role="status" hidden></div>
         <div class="map-label"><span class="eyebrow">IL TUO VIAGGIO, IN TEMPO REALE</span><strong id="map-headline">La strada comincia qui.</strong></div>
         <div class="map-place" id="map-place" role="status" aria-live="polite" aria-atomic="true" hidden>
           <div class="map-place-top"><span id="map-place-kicker">COMUNE ATTUALE</span><span id="map-voice-state">Voce attiva</span></div>
