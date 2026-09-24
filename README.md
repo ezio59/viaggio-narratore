@@ -6,7 +6,7 @@ Il logo unisce un segnaposto sulla mappa, una bussola e le onde della voce. Il f
 
 ## Prova rapida
 
-- Apri l'app pubblicata su HTTPS dal telefono e premi **Inizia il viaggio**. Il browser chiederà il permesso di usare la posizione.
+- Apri [Viaggio Narratore](https://ezio59.github.io/viaggio-narratore/) dal telefono e premi **Inizia il viaggio**. Il browser chiederà il permesso di usare la posizione.
 - Premi **Prova un esempio** per esplorare Passirano senza inviare coordinate a un servizio di geocodifica. Richiede comunque Internet per mappa e Wikipedia.
 - Quando il comune cambia, il titolo e le schede si aggiornano e la voce lo annuncia. Le richieste di riconoscimento sono limitate nel tempo e nella distanza: l'aggiornamento del nome può arrivare dopo alcuni secondi, talvolta più a lungo vicino al confine o con GPS impreciso.
 - Un riquadro ben visibile sulla mappa indica il comune anche con la voce spenta. Mostra l'eventuale frazione verificata e l'ora dell'ultimo aggiornamento. Se il GPS perde precisione o il viaggio è terminato, lo segnala come *ultimo comune rilevato* anziché come posizione attuale.
@@ -14,9 +14,9 @@ Il logo unisce un segnaposto sulla mappa, una bussola e le onde della voce. Il f
 - La voce degli avvisi è attiva all'avvio, disattivabile con **Voce attiva**. Premi **Chiedi** e pronuncia “Dove mi trovo?”, “La sua storia” o “Cosa vedere?”; se il browser non offre il riconoscimento vocale, restano disponibili i pulsanti. Il riconoscimento potrebbe usare un servizio del browser per trascrivere l'audio.
 - **Satellite ↗** apre la vista satellitare sulla posizione attuale in Google Maps. Per mantenere una mappa satellitare integrata nell'app serve configurare un fornitore di immagini con le sue credenziali e condizioni d'uso; la mappa principale resta OpenStreetMap.
 
-## Pubblicazione su GitHub Pages
+## Installazione su iPhone
 
-Carica i file contenuti in questa cartella nella radice di un nuovo repository e abilita **Settings → Pages → Deploy from a branch → main / (root)**. Apri l'indirizzo HTTPS risultante sull'iPhone. La PWA può essere aggiunta alla schermata Home tramite Safari. Non sono necessari account, chiavi API o backend.
+Apri il link in Safari, tocca **Condividi** e scegli **Aggiungi alla schermata Home**. La PWA funziona senza account; per mappe, riconoscimento del comune e contenuti serve una connessione Internet. Per seguire il viaggio tieni l'app aperta sul telefono.
 
 ## Fonti, privacy e limiti
 
