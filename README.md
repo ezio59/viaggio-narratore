@@ -12,7 +12,7 @@ Il logo unisce un segnaposto sulla mappa, una bussola e le onde della voce. Il f
 - Un riquadro ben visibile sulla mappa indica il comune anche con la voce spenta. Mostra l'eventuale frazione verificata e l'ora dell'ultimo aggiornamento. Se il GPS perde precisione o il viaggio è terminato, lo segnala come *ultimo comune rilevato* anziché come posizione attuale.
 - Il comune ha sempre precedenza sulla località: per annunciare un comune italiano l'app richiede un confine amministrativo di livello comunale. Se manca, mostra il nome come provvisorio e non lo annuncia. Una frazione viene aggiunta solo se una scheda Wikipedia la descrive come frazione del comune rilevato. L'assenza della frazione nella scheda non esclude che essa esista nella realtà.
 - La voce degli avvisi è attiva all'avvio, disattivabile con **Voce attiva**. Tocca **Cosa vedere** per ascoltare un breve elenco dei luoghi vicini, **La sua storia** per ascoltare il racconto o un luogo per sentirne la descrizione. Premi **Chiedi** e pronuncia “Dove mi trovo?”, “La sua storia” o “Cosa vedere?”; se il browser non offre il riconoscimento vocale, restano disponibili i pulsanti. Il riconoscimento potrebbe usare un servizio del browser per trascrivere l'audio.
-- **Satellite ↗** apre la vista satellitare sulla posizione attuale in Google Maps. Quando passi a Google Maps, questa app va in pausa e non annuncia i nuovi comuni; tornando all'app, il monitoraggio riprende. Per mantenere una mappa satellitare integrata nell'app serve configurare un fornitore di immagini con le sue credenziali e condizioni d'uso; la mappa principale resta OpenStreetMap.
+- **Satellite ↗** apre la vista satellitare sulla posizione attuale in Google Maps. Nella versione web il monitoraggio va in pausa; nella versione iPhone nativa il GPS e la voce continuano in background dopo l'avvio del viaggio. Per mantenere una mappa satellitare integrata nell'app serve configurare un fornitore di immagini con le sue credenziali e condizioni d'uso; la mappa principale resta OpenStreetMap.
 
 ## Installazione su iPhone
 
@@ -26,6 +26,12 @@ Apri il link in Safari, tocca **Condividi** e scegli **Aggiungi alla schermata H
 - Serve HTTPS per il GPS. Il browser può sospendere posizione, sintesi e riconoscimento vocale quando passa in background. Il monitoraggio è pensato per essere usato con la pagina aperta.
 
 Per un utilizzo pubblico con molto traffico è opportuno verificare capacità e condizioni d'uso dei fornitori dei dati. L'endpoint di geocodifica è raccolto in una costante in `app.js` per poterlo sostituire.
+
+## Versione iPhone nativa
+
+Il progetto Xcode è descritto in `ios/project.yml` e il codice Swift si trova in `ios/ViaggioNarratore/`. La versione nativa mostra l'interfaccia pubblicata in una vista web, ma usa Core Location e AVSpeechSynthesizer per monitorare e annunciare i comuni anche mentre Google Maps è in primo piano. Avvia il viaggio **prima** di passare al navigatore; **Termina** disattiva il GPS. Gli annunci dipendono dalla connessione ai dati del servizio di geocodifica, dal permesso Posizione e dalla gestione audio di iOS. Non viene salvata una cronologia. Il GPS continuo può consumare batteria.
+
+Per generare il progetto su un Mac con Xcode e [XcodeGen](https://github.com/yonaskolb/XcodeGen), esegui `cd ios && xcodegen generate`, apri `ViaggioNarratore.xcodeproj`, seleziona il tuo team in Signing & Capabilities e installa sul tuo iPhone. L'identificativo `it.eziocanino.viaggionarratore` potrebbe dover essere cambiato se già occupato. Per una distribuzione a distanza tramite TestFlight occorre configurare la firma e App Store Connect. **In questo ambiente non sono disponibili Xcode, la firma Apple né un iPhone per il collaudo**: i sorgenti sono pronti, ma non c'è ancora un'app installabile verificata. Prova in auto con Google Maps aperto, con schermata bloccata, voce spenta, perdita di rete e confini comunali; non sostituire il collaudo reale con il simulatore.
 
 ## Sviluppo
 

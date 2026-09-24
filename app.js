@@ -27,6 +27,9 @@ const state = {
 const GEO_ENDPOINT = 'https://api.bigdatacloud.net/data/reverse-geocode-client';
 const WIKI_ENDPOINT = 'https://it.wikipedia.org/w/api.php';
 const MAP_TILES = 'https://tile.openstreetmap.org/{z}/{x}/{y}.png';
+const native = window.webkit?.messageHandlers?.viaggio;
+const nativeSend = (type, value) => native?.postMessage({ type, value });
+let restoringNative = false;
 
 function initMap() {
   if (typeof L === 'undefined') {
@@ -83,7 +86,7 @@ function showTravelControls() {
 }
 
 function startTravel() {
-  stopTravel(false);
+  if (!restoringNative) stopTravel(false);
   state.mode = 'live';
   state.epoch++;
   state.city = null;
@@ -109,7 +112,7 @@ function startTravel() {
   ui.eyebrow.textContent = 'IN CERCA DELLA POSIZIONE';
   ui.title.textContent = 'Sto cercando dove sei…';
   ui.description.textContent = 'Consenti l’accesso alla posizione quando il telefono lo chiede.';
-  if (!window.isSecureContext || !navigator.geolocation) {
+  if (!native && (!window.isSecureContext || !navigator.geolocation)) {
     showFeedback('Per seguire il GPS apri l’app da un indirizzo HTTPS sul telefono e consenti la posizione. Puoi intanto provare l’esempio.');
     ui.travelControls.hidden = true;
     ui.startActions.hidden = false;
@@ -123,12 +126,14 @@ function startTravel() {
 
 function resumeWatch() {
   if (state.mode !== 'live' || state.watchId !== null) return;
+  if (native) { nativeSend('start'); return; }
   state.watchId = navigator.geolocation.watchPosition(onPosition, onGeoError, {
     enableHighAccuracy: true, maximumAge: 5000, timeout: 20000
   });
 }
 
 function stopTravel(resetStatus = true) {
+  if (native) nativeSend('stop');
   if (state.watchId !== null) navigator.geolocation.clearWatch(state.watchId);
   state.watchId = null;
   if (state.recognizer && state.listening) state.recognizer.abort();
@@ -222,7 +227,7 @@ async function lookupMunicipality(position, epoch) {
       displayCity(city, position, false);
       if (city.verified || city.countryCode !== 'IT') {
         loadContent(city, position, state.epoch);
-        if (state.voiceOn) speak(city.verified ? `Sei entrato nel comune di ${city.name}.` : `Ora sei a ${city.name}.`);
+        if (state.voiceOn && !native) speak(city.verified ? `Sei entrato nel comune di ${city.name}.` : `Ora sei a ${city.name}.`);
       } else showFeedback('Sto verificando il confine del comune. Il nome indicato potrebbe essere una località vicina.');
     }
     if (city.verified && state.city?.key === city.key) resolveLocality(city, state.epoch);
@@ -503,6 +508,7 @@ function renderStory() {
 }
 
 function speak(text, replace = true) {
+  if (native) { nativeSend('speak', { text, replace }); return; }
   if (!('speechSynthesis' in window) || !text) return;
   if (replace) speechSynthesis.cancel();
   const utterance = new SpeechSynthesisUtterance(text.slice(0, 1000));
@@ -581,16 +587,35 @@ function startListening() {
 }
 
 function toggleVoice() {
-  if (!('speechSynthesis' in window)) return showFeedback('Questo browser non dispone della lettura vocale.');
+  if (!native && !('speechSynthesis' in window)) return showFeedback('Questo browser non dispone della lettura vocale.');
   state.voiceOn = !state.voiceOn;
+  if (native) nativeSend('voice', state.voiceOn);
   updateMapPlace();
   ui.voice.setAttribute('aria-pressed', String(state.voiceOn));
   ui.voice.querySelector('span').textContent = state.voiceOn ? 'Voce attiva' : 'Voce spenta';
   if (state.voiceOn) {
     if (state.activeTab === 'story') narrateStory();
     else narratePlaces();
-  } else speechSynthesis.cancel();
+  } else if (native) nativeSend('cancel');
+  else speechSynthesis.cancel();
 }
+
+// Chiamata dal monitor GPS nativo solo mentre la pagina è visibile.
+window.viaggioNativePosition = coords => {
+  if (state.mode === 'live') onPosition({ coords });
+};
+window.viaggioNativeError = message => {
+  if (state.mode === 'live') { showFeedback(message); setStatus('GPS in attesa', 'searching'); }
+};
+window.viaggioNativeRestore = voiceOn => {
+  if (state.mode === 'live') return;
+  state.voiceOn = voiceOn;
+  ui.voice.setAttribute('aria-pressed', String(voiceOn));
+  ui.voice.querySelector('span').textContent = voiceOn ? 'Voce attiva' : 'Voce spenta';
+  restoringNative = true;
+  startTravel();
+  restoringNative = false;
+};
 
 $('start-button').addEventListener('click', startTravel);
 $('demo-button').addEventListener('click', startDemo);
@@ -609,6 +634,13 @@ document.querySelector('.tabs').addEventListener('keydown', event => {
   next.click(); next.focus();
 });
 document.addEventListener('visibilitychange', () => {
+  if (native) {
+    if (!document.hidden && state.mode === 'live') {
+      state.lastLookup = null;
+      nativeSend('refresh');
+    }
+    return;
+  }
   if (document.hidden && state.mode === 'live' && state.watchId !== null) {
     navigator.geolocation.clearWatch(state.watchId);
     state.watchId = null;
@@ -625,3 +657,4 @@ document.addEventListener('visibilitychange', () => {
   }
 });
 initMap();
+nativeSend('ready');

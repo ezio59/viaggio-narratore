@@ -1,0 +1,21 @@
+name: ViaggioNarratore
+options:
+  bundleIdPrefix: it.eziocanino
+  deploymentTarget:
+    iOS: '16.0'
+settings:
+  base:
+    SWIFT_VERSION: '5.0'
+    TARGETED_DEVICE_FAMILY: '1'
+targets:
+  ViaggioNarratore:
+    type: application
+    platform: iOS
+    sources:
+      - path: ViaggioNarratore
+    settings:
+      base:
+        PRODUCT_BUNDLE_IDENTIFIER: it.eziocanino.viaggionarratore
+        INFOPLIST_FILE: ViaggioNarratore/Info.plist
+        ASSETCATALOG_COMPILER_APPICON_NAME: AppIcon
+        CODE_SIGN_STYLE: Automatic
