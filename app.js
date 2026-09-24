@@ -302,6 +302,7 @@ function startDemo() {
 }
 
 function setTab(tab) {
+  if (state.activeTab !== tab) state.pendingNarration = '';
   state.activeTab = tab;
   for (const name of ['see', 'story']) {
     const active = tab === name;
@@ -576,10 +577,8 @@ function toggleVoice() {
   ui.voice.setAttribute('aria-pressed', String(state.voiceOn));
   ui.voice.querySelector('span').textContent = state.voiceOn ? 'Voce attiva' : 'Voce spenta';
   if (state.voiceOn) {
-    const narration = state.activeTab === 'story' && state.storyText
-      ? `${state.city?.name}. ${state.storyText}`
-      : state.city ? `Sei a ${state.city.name}. Tocca un luogo per ascoltarne la descrizione, oppure apri La sua storia.` : 'Voce attiva.';
-    speak(narration);
+    if (state.activeTab === 'story') narrateStory();
+    else narratePlaces();
   } else speechSynthesis.cancel();
 }
 
@@ -587,8 +586,8 @@ $('start-button').addEventListener('click', startTravel);
 $('demo-button').addEventListener('click', startDemo);
 $('stop-button').addEventListener('click', () => stopTravel());
 ui.recenter.addEventListener('click', () => { state.following = true; if (state.position) updateMarker(state.position); });
-ui.tabSee.addEventListener('click', () => setTab('see'));
-ui.tabStory.addEventListener('click', () => { setTab('story'); if (state.voiceOn && state.storyText) speak(`${state.city?.name}. ${state.storyText}`); });
+ui.tabSee.addEventListener('click', () => { setTab('see'); if (state.voiceOn) narratePlaces(); });
+ui.tabStory.addEventListener('click', () => { setTab('story'); if (state.voiceOn) narrateStory(); });
 ui.voice.addEventListener('click', toggleVoice);
 ui.ask.addEventListener('click', startListening);
 $('info-link').addEventListener('click', event => { event.preventDefault(); ui.dialog.showModal(); });
