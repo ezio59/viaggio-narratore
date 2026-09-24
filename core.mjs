@@ -48,8 +48,12 @@ export function rankPlaces(places, municipalityName) {
 export function extractHistory(html) {
   if (typeof DOMParser === 'undefined' || !html) return '';
   const doc = new DOMParser().parseFromString(html, 'text/html');
-  doc.querySelectorAll('sup, table, figure, .mw-editsection, .navbox, .metadata, .toc, script, style').forEach(node => node.remove());
-  return cleanText(doc.body.textContent).replace(/\s+([.,;:!?])/g, '$1').slice(0, 2800);
+  doc.querySelectorAll('sup, table, figure, .mw-editsection, .navbox, .metadata, .toc, .reflist, .references, script, style').forEach(node => node.remove());
+  const paragraphs = [...doc.body.querySelectorAll('p')]
+    .map(node => cleanText(node.textContent).replace(/\s+([.,;:!?])/g, '$1'))
+    .filter(text => text.length > 45)
+    .slice(0, 3);
+  return (paragraphs.length ? paragraphs.join('\n\n') : cleanText(doc.body.textContent)).slice(0, 1100).trim();
 }
 
 export function cleanText(value) {
