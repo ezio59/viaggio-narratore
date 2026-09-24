@@ -1,4 +1,4 @@
-import { municipalityFromGeocode, distanceMeters, rankPlaces, extractHistory, cleanText, voiceIntent } from './core.mjs';
+import { municipalityFromGeocode, distanceMeters, rankPlaces, extractHistory, cleanText, voiceIntent } from './core.mjs?v=20260924-2';
 
 const $ = id => document.getElementById(id);
 const ui = {
