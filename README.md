@@ -20,7 +20,7 @@ Apri il link in Safari, tocca **Condividi** e scegli **Aggiungi alla schermata H
 
 ## Fonti, privacy e limiti
 
-- Mappa: OpenStreetMap con attribuzione visibile; libreria Leaflet 1.9.4. Le mappe richiedono Internet; non viene eseguito alcun download massivo di tessere.
+- Mappa: OpenStreetMap con attribuzione visibile; libreria Leaflet 1.9.4 inclusa in `vendor/` con licenza MIT. Le tessere richiedono Internet; non viene eseguito alcun download massivo. Se il browser non le carica, compare un avviso direttamente sulla mappa.
 - Comune: BigDataCloud Free Client Side Reverse Geocode to City. Le coordinate GPS attuali sono inviate direttamente dal browser al servizio, secondo le sue condizioni; l'app non salva cronologia o coordinate. L'API descrive l'area amministrativa; nelle zone di confine i dati possono essere approssimativi.
 - Storia e dintorni: API di Wikipedia in italiano. Anche la ricerca dei luoghi vicini invia le coordinate attuali a Wikipedia. Le schede dei dintorni sono entro 10 km dal punto rilevato, dunque possono appartenere ad altri comuni. Non sono consigli editoriali né una lista completa delle attrazioni.
 - Serve HTTPS per il GPS. Il browser può sospendere posizione, sintesi e riconoscimento vocale quando passa in background. Il monitoraggio è pensato per essere usato con la pagina aperta.
