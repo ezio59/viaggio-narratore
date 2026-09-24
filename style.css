@@ -93,6 +93,10 @@ h1 { margin: 15px 0 12px; max-width: 600px; font-size: clamp(34px, 4vw, 56px); l
 .dialog-close { position: absolute; top: 12px; right: 16px; border: 0; background: none; color: #567371; font-size: 29px; }
 .dialog-done { margin-top: 10px; }
 
+@media (min-width: 761px) {
+  .map-panel { position: sticky; top: 0; height: max(560px, calc(100dvh - 82px)); }
+}
+
 @media (max-width: 760px) {
   .app-shell { box-shadow: none; }
   .topbar { height: 69px; padding: 0 17px; gap: 10px; }
