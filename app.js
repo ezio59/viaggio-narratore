@@ -3,6 +3,7 @@ import { municipalityFromGeocode, distanceMeters, rankPlaces, extractHistory, cl
 const $ = id => document.getElementById(id);
 const ui = {
   statusPill: $('status-pill'), statusText: $('status-text'), mapHeadline: $('map-headline'),
+  mapWarning: $('map-warning'),
   mapPlace: $('map-place'), mapPlaceKicker: $('map-place-kicker'), mapPlaceName: $('map-place-name'),
   mapPlaceDetail: $('map-place-detail'), mapVoiceState: $('map-voice-state'),
   eyebrow: $('place-eyebrow'), title: $('place-title'), description: $('place-description'),
@@ -29,14 +30,23 @@ const MAP_TILES = 'https://tile.openstreetmap.org/{z}/{x}/{y}.png';
 
 function initMap() {
   if (typeof L === 'undefined') {
-    showFeedback('La mappa non si è caricata. Controlla la connessione e aggiorna la pagina.');
+    ui.mapWarning.textContent = 'La mappa non si è caricata. Apri l’app in Safari e aggiorna la pagina.';
+    ui.mapWarning.hidden = false;
     return;
   }
   state.map = L.map('map', { zoomControl: false }).setView([42.7, 12.7], 6);
-  L.tileLayer(MAP_TILES, {
+  const tiles = L.tileLayer(MAP_TILES, {
     maxZoom: 19,
     attribution: '&copy; <a href="https://www.openstreetmap.org/copyright" target="_blank" rel="noopener noreferrer">OpenStreetMap</a> contributors'
   }).addTo(state.map);
+  let tileErrors = 0;
+  tiles.on('tileerror', () => {
+    if (++tileErrors >= 3) {
+      ui.mapWarning.textContent = 'Le strade non si caricano. Controlla la connessione o apri l’app in Safari.';
+      ui.mapWarning.hidden = false;
+    }
+  });
+  tiles.on('tileload', () => { tileErrors = 0; ui.mapWarning.hidden = true; });
   L.control.zoom({ position: 'bottomright' }).addTo(state.map);
   state.map.on('dragstart', () => { state.following = false; ui.recenter.hidden = !state.position; });
 }
