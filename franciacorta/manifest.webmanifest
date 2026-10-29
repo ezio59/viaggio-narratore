@@ -1,0 +1,24 @@
+{
+  "name": "Franciacorta Village · Mappa interattiva",
+  "short_name": "Franciacorta",
+  "description": "Cerca i negozi, consulta la planimetria e orientati con il GPS al Franciacorta Village.",
+  "start_url": "./index.html",
+  "scope": "./",
+  "display": "standalone",
+  "background_color": "#f1f5f5",
+  "theme_color": "#13283e",
+  "icons": [
+    {
+      "src": "./icon-180.png",
+      "sizes": "180x180",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "./icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any maskable"
+    }
+  ]
+}
