@@ -15,6 +15,9 @@
 :root{color-scheme:light;--ink:#142a3d;--blue:#1d5e77;--aqua:#14a6ad;--sand:#f6f2eb;--muted:#5e6d79;--edge:#dee3e4;--white:#fff}
 *{box-sizing:border-box}body{margin:0;background:#f1f5f5;color:var(--ink);font:15px/1.46 -apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif}button,input,select{font:inherit}button{cursor:pointer}a{color:#09628b}header{color:white;background:linear-gradient(125deg,#13283e,#256179);padding:22px max(17px,calc((100vw - 1250px)/2)) 19px}header small{display:block;color:#b7e5e4;font-size:12px;letter-spacing:2px;font-weight:700}h1{font-size:clamp(24px,3.5vw,37px);margin:5px 0 5px;letter-spacing:-.7px}header p{margin:0;color:#d3e5ea}main{max-width:1290px;padding:16px;margin:auto}nav{display:flex;gap:8px;overflow:auto;padding:0 0 12px}.tab{padding:12px 18px;border:1px solid #dbe4e6;background:white;color:#1c3b50;border-radius:13px;font-weight:700;white-space:nowrap}.tab.active{background:var(--ink);color:white;border-color:var(--ink)}.layout{display:grid;grid-template-columns:minmax(285px,340px) minmax(0,1fr);gap:15px;align-items:start}section.card{background:white;border:1px solid var(--edge);border-radius:19px;box-shadow:0 5px 20px #1b34480b;overflow:hidden}.sidebar{padding:17px}.label{font-weight:800;margin:0 0 6px;font-size:13px}.search{width:100%;padding:13px 14px;border-radius:12px;border:1px solid #bbcbd0;font-size:16px;outline-color:var(--aqua);background:white}.filters{display:flex;gap:7px;overflow:auto;margin:12px -1px 8px;padding-bottom:5px}.chip{background:#edf3f4;border:1px solid #d2e0e2;border-radius:99px;padding:7px 11px;font-size:12px;white-space:nowrap;color:#25495c;font-weight:700}.chip.active{background:#174b63;color:white}.count{font-size:12px;color:#657783;margin:9px 0}.results{max-height:58vh;min-height:270px;overflow:auto;border-top:1px solid #e5eaeb}.result{padding:11px 5px;display:flex;align-items:center;gap:10px;border-bottom:1px solid #eef1f2}.result:last-child{border:0}.result .detail{flex:1;min-width:0}.result strong{display:block;font-size:14px}.result small{display:block;color:#62727e;font-size:12px}.unit{display:flex;justify-content:center;align-items:center;min-width:36px;height:36px;border-radius:10px;background:#e3f2f3;color:#086c73;font-weight:800}.btn{background:#165d75;color:white;border:0;padding:9px 11px;border-radius:10px;font-size:13px;font-weight:700}.btn.secondary{background:#edf3f5;color:#1c536b;border:1px solid #d2e0e2}.btn:focus-visible,.tab:focus-visible,.chip:focus-visible{outline:3px solid #e0b345;outline-offset:2px}.toprow{padding:12px 14px;display:flex;gap:8px;align-items:center;justify-content:space-between;flex-wrap:wrap}.toprow h2{font-size:17px;margin:0}.group{display:flex;gap:7px;flex-wrap:wrap}.note{padding:9px 14px;font-size:12px;background:#f8fafb;color:#536a78;border-top:1px solid #ebf1f2}.planScroll{height:min(62vh,600px);overflow:auto;background:#fff;overscroll-behavior:contain;touch-action:pan-x pan-y;position:relative;border-top:1px solid #e9eeee;border-bottom:1px solid #e9eeee}.planCanvas{width:1000px;height:635px;position:relative;transform-origin:top left}.planCanvas img{width:100%;height:100%;display:block;user-select:none;-webkit-user-drag:none}.unitDot{position:absolute;display:none;z-index:5;transform:translate(-50%,-50%);border-radius:50%;background:#e44e3c;color:white;border:4px solid white;box-shadow:0 3px 18px #0008;min-width:50px;height:50px;padding:0 7px;align-items:center;justify-content:center;font-size:16px;font-weight:900;pointer-events:none}.userDot{position:absolute;display:none;z-index:4;border-radius:50%;background:#1975fc;border:4px solid white;box-shadow:0 2px 12px #12498599;width:26px;height:26px;transform:translate(-50%,-50%);pointer-events:none}.hint{padding:12px 15px;background:#fffaf0;color:#5e4e2c;font-size:13px;border-top:1px solid #f0e5c8}.chosen{padding:13px 15px;display:none;border-top:1px solid #dce8e9;background:#edf8f7}.chosen b{font-size:16px}.chosen p{margin:4px 0;font-size:13px}.links{display:flex;gap:7px;flex-wrap:wrap;margin-top:10px}#gps{height:min(70vh,630px);min-height:410px;background:#e1ebe7}#mapPanel{display:none}.gpsToolbar{padding:12px 15px;display:flex;flex-wrap:wrap;gap:8px;align-items:center}.gpsToolbar span{font-size:12px;color:#61727b}.gpsInfo{padding:12px 15px;background:#f0f7f7;font-size:13px;color:#324b5a}.gpsInfo strong{display:block}.manual{margin:12px 15px;padding:12px;border-radius:12px;background:#f5f8f8;border:1px solid #e0ebeb}.manual label{display:block;font-size:12px;font-weight:700;margin-bottom:5px}.manual select{background:white;padding:10px;border:1px solid #b9cbd1;border-radius:10px;width:100%}.help{padding:14px 18px;background:#f9fbfb;border:1px solid #e1e8e8;border-radius:14px;margin-top:15px;font-size:13px;color:#526975}.help p{margin:0 0 7px}.help p:last-child{margin:0}footer{padding:16px 0 30px;color:#586b76;font-size:12px}.venuePoint{background:#13283e;color:white;border:2px solid white;border-radius:100%;width:18px;height:18px;box-shadow:0 1px 5px #0004}
 @media(max-width:780px){main{padding:11px}.layout{display:flex;flex-direction:column}.sidebar{width:100%}.mapcard{width:100%}.results{max-height:210px;min-height:80px}.planScroll{height:50vh;min-height:300px}.sidebar{padding:13px}header{padding:19px 16px}.toprow{padding:12px}.tab{padding:10px 14px;font-size:13px}}
+
+.mapAlert{display:none;margin:0;padding:10px 14px;background:#fff7e5;color:#65502b;font-size:13px;border-top:1px solid #eddfba}
+.mapAlert:not([hidden]){display:block}
 </style>
 </head>
 <body>
@@ -33,7 +36,7 @@
 <div class="hint" id="tapHint">🖱️ Tocca la planimetria per segnare manualmente dove ti trovi. Il segnaposto blu è una posizione indicata da te, <b>non rilevata dal GPS</b>.</div>
 <div class="note">Le boutique sono identificate dal <b>numero ufficiale del locale</b>. La mappa è consultabile con zoom e spostamento. <a href="https://www.franciacortadesignervillage.com/village/mappa-del-centro" target="_blank" rel="noopener">Consulta anche il sito ufficiale ↗</a>. L’evidenziazione approssimativa, quando presente, non sostituisce il numero sulla planimetria.</div>
 </section>
-<section class="card mapcard" id="mapPanel"><div class="toprow"><h2>La tua posizione geografica</h2><span style="color:#6c7e88;font-size:12px">GPS attivo solo su richiesta</span></div><div class="gpsToolbar"><button class="btn" id="startGPS" onclick="startGPS()">📍 La mia posizione</button><button class="btn secondary" onclick="stopGPS()">Interrompi GPS</button><button class="btn secondary" onclick="centerVenue()">Centra Outlet</button><span id="gpsStatus">GPS non attivo</span></div><div id="gps" role="application" aria-label="Mappa geografica interattiva con GPS"></div>
+<section class="card mapcard" id="mapPanel"><div class="toprow"><h2>La tua posizione geografica</h2><span style="color:#6c7e88;font-size:12px">GPS attivo solo su richiesta</span></div><div class="gpsToolbar"><button class="btn" id="startGPS" onclick="startGPS()">📍 La mia posizione</button><button class="btn secondary" onclick="stopGPS()">Interrompi GPS</button><button class="btn secondary" onclick="centerVenue()">Centra Outlet</button><button class="btn secondary" id="changeMap" onclick="toggleMapSource()">🗺️ Mappa alternativa</button><button class="btn secondary" onclick="reloadMapTiles()">↻ Ricarica mappa</button><span id="gpsStatus">GPS non attivo</span></div><div class="mapAlert" id="mapAlert" role="status" hidden></div><div id="gps" role="application" aria-label="Mappa geografica interattiva con GPS"></div>
 <div class="gpsInfo" id="gpsInfo"><strong>Come funziona</strong>Premi «La mia posizione» e autorizza la localizzazione. Comparirà un punto blu sulla mappa. Se vuoi, puoi interrompere l’aggiornamento in qualsiasi momento.</div>
 <div class="manual"><label for="manualPlace">Alternativa manuale se il GPS non funziona</label><select id="manualPlace" onchange="chooseManual()"><option value="">Scegli dove centrare la mappa…</option><option value="village">Franciacorta Designer Village</option><option value="coords">Inserisco coordinate GPS</option></select><div id="manualCoords" style="display:none;margin-top:8px"><input id="lat" inputmode="decimal" placeholder="Latitudine, es. 45.577301" style="padding:9px;width:48%;border:1px solid #b9cbd1;border-radius:7px"><input id="lng" inputmode="decimal" placeholder="Longitudine, es. 10.118160" style="padding:9px;width:48%;border:1px solid #b9cbd1;border-radius:7px"><button class="btn secondary" style="margin-top:7px" onclick="goManualCoords()">Mostra coordinate</button></div></div>
 <div class="note">La posizione è elaborata nel browser, non viene inviata a questa pagina o salvata. Le richieste delle tessere cartografiche ai fornitori di mappe seguono le loro informative. L’accuratezza del GPS dipende dal telefono e dagli edifici circostanti; <b>non è un sistema di navigazione interna fra singoli negozi</b>.</div>
@@ -232,15 +235,74 @@ function resetZoom(){fit()}
 document.getElementById('planImg').addEventListener('error',()=>{document.getElementById('tapHint').innerHTML='Non riesco a caricare la planimetria esterna. <a href="'+imageURL+'" target="_blank" rel="noopener">Aprila direttamente dal sito ufficiale ↗</a>. La ricerca dei negozi continua a funzionare.'});
 /* Il puntatore manuale è volutamente distinto dalla posizione GPS. */
 document.getElementById('planCanvas').addEventListener('click',ev=>{const rc=ev.currentTarget.getBoundingClientRect();const x=(ev.clientX-rc.left)/scale,y=(ev.clientY-rc.top)/scale;const p=document.getElementById('userDot');p.style.left=(x/10)+'%';p.style.top=(y/6.35)+'%';p.style.display='block';document.getElementById('tapHint').textContent='🔵 Punto blu inserito manualmente. Tocca un altro punto per spostarlo. Non è un rilevamento GPS.'});
-let map,venue,userMarker,accuracyCircle,watchId=null,lastGps=null;const OUTLET=[45.577301,10.118160];
-function initMap(){if(map)return;if(!window.L){document.getElementById('gpsInfo').textContent='Impossibile caricare la mappa geografica: serve una connessione Internet. Puoi usare la planimetria e aprire il sito ufficiale.';return}map=L.map('gps',{zoomControl:true}).setView(OUTLET,17);L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png',{maxZoom:20,attribution:'© <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'}).addTo(map);venue=L.marker(OUTLET).addTo(map).bindPopup('<strong>Franciacorta Designer Village</strong><br>Piazza Cascina Moie 1/2, Rodengo Saiano.<br>Posizione di riferimento del centro, non di un singolo negozio.');setTimeout(()=>map.invalidateSize(),150)}
-function showTab(which){const isPlan=which==='plan';document.getElementById('planPanel').style.display=isPlan?'block':'none';document.getElementById('mapPanel').style.display=isPlan?'none':'block';document.getElementById('tabPlan').classList.toggle('active',isPlan);document.getElementById('tabGPS').classList.toggle('active',!isPlan);if(!isPlan){initMap();setTimeout(()=>map?.invalidateSize(),250)}}
-function startGPS(){showTab('gps');const stat=document.getElementById('gpsStatus');if(!navigator.geolocation){stat.textContent='GPS non supportato dal browser';return}if(watchId!==null){stat.textContent='GPS già attivo';return}stat.textContent='In attesa del consenso…';const btn=document.getElementById('startGPS');btn.textContent='📍 GPS attivo';watchId=navigator.geolocation.watchPosition(pos=>{const xy=[pos.coords.latitude,pos.coords.longitude];lastGps=xy;if(map){if(!userMarker){userMarker=L.circleMarker(xy,{radius:9,color:'white',weight:3,fillColor:'#156cf4',fillOpacity:1}).addTo(map).bindPopup('La tua posizione GPS');accuracyCircle=L.circle(xy,{radius:pos.coords.accuracy,color:'#2e8be7',weight:1,fillColor:'#3399ff',fillOpacity:.10}).addTo(map)}else{userMarker.setLatLng(xy);accuracyCircle.setLatLng(xy).setRadius(pos.coords.accuracy)}map.setView(xy,Math.max(map.getZoom(),18))}stat.textContent='GPS attivo · precisione ±'+Math.round(pos.coords.accuracy)+' m';document.getElementById('gpsInfo').innerHTML='<strong>Posizione GPS ricevuta</strong>Latitudine '+xy[0].toFixed(6)+', longitudine '+xy[1].toFixed(6)+'. Precisione stimata ±'+Math.round(pos.coords.accuracy)+' metri. <br><small>Il GPS resta attivo finché non premi «Interrompi GPS» o chiudi questa pagina.</small>'},error=>{const msgs={1:'Consenso negato: verifica i permessi di posizione in Safari.',2:'Segnale GPS non disponibile.',3:'Tempo scaduto: riprova all’aperto.'};stat.textContent=msgs[error.code]||'GPS non disponibile';stopGPS(false)}, {enableHighAccuracy:true,maximumAge:3000,timeout:18000})}
+let map,venue,userMarker,accuracyCircle,watchId=null,lastGps=null;
+const OUTLET=[45.577301,10.118160];
+let baseLayer=null,mapSource='osm',tileFails=0,tileSuccess=0,tileTimer=null;
+function mapAlert(message){const box=document.getElementById('mapAlert');box.textContent=message||'';box.hidden=!message}
+function refreshMapSize(){if(!map||document.getElementById('mapPanel').style.display==='none')return;requestAnimationFrame(()=>{map.invalidateSize({pan:false});setTimeout(()=>map?.invalidateSize({pan:false}),300)})}
+function tileLayerFor(source){
+ const osm=source==='osm';
+ const url=osm?'https://tile.openstreetmap.org/{z}/{x}/{y}.png':'https://server.arcgisonline.com/ArcGIS/rest/services/World_Street_Map/MapServer/tile/{z}/{y}/{x}';
+ const opts={maxZoom:20,maxNativeZoom:19,keepBuffer:3,updateWhenIdle:true,attribution:osm?'© <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors':'Tiles © <a href="https://www.esri.com/">Esri</a> e fornitori dei dati'};
+ const layer=L.tileLayer(url,opts);
+ layer.on('tileload',()=>{if(mapSource!==source)return;tileSuccess++;if(tileSuccess>=3)mapAlert('')});
+ layer.on('tileerror',()=>{if(mapSource!==source)return;tileFails++;if(tileFails>=3){if(source==='osm')setMapSource('esri',true);else mapAlert('Alcune parti della cartografia non sono disponibili. Tocca «Ricarica mappa» oppure prova «OpenStreetMap».')}});
+ return layer;
+}
+function setMapSource(source,automatic=false){
+ if(!map)return;
+ clearTimeout(tileTimer);
+ if(baseLayer)map.removeLayer(baseLayer);
+ mapSource=source;tileFails=0;tileSuccess=0;
+ baseLayer=tileLayerFor(source).addTo(map);
+ document.getElementById('changeMap').textContent=source==='osm'?'🗺️ Mappa alternativa':'🗺️ OpenStreetMap';
+ mapAlert(automatic?'Alcune tessere non si caricavano: sto provando una cartografia alternativa.':'Caricamento cartografia…');
+ refreshMapSize();
+ tileTimer=setTimeout(()=>{if(mapSource!==source)return;if(tileSuccess<2){if(source==='osm')setMapSource('esri',true);else mapAlert('La connessione non sta caricando la cartografia. Prova «Ricarica mappa» o controlla la rete.')}},8500);
+}
+function toggleMapSource(){initMap();if(map)setMapSource(mapSource==='osm'?'esri':'osm')}
+function reloadMapTiles(){initMap();if(!map)return;tileFails=0;tileSuccess=0;mapAlert('Ricaricamento della cartografia…');baseLayer?.redraw();refreshMapSize()}
+function initMap(){
+ if(map){refreshMapSize();return}
+ if(!window.L){document.getElementById('gpsInfo').textContent='Impossibile caricare la mappa geografica: controlla la connessione Internet. La planimetria dei negozi resta disponibile.';return}
+ map=L.map('gps',{zoomControl:true}).setView(OUTLET,17);
+ venue=L.marker(OUTLET).addTo(map).bindPopup('<strong>Franciacorta Designer Village</strong><br>Piazza Cascina Moie 1/2, Rodengo Saiano.<br>Posizione indicativa del centro, non di un singolo negozio.');
+ setMapSource('osm');
+ if(window.ResizeObserver)new ResizeObserver(()=>{if(document.getElementById('mapPanel').style.display!=='none')map.invalidateSize({pan:false})}).observe(document.getElementById('gps'));
+ refreshMapSize();
+}
+function showTab(which){const isPlan=which==='plan';document.getElementById('planPanel').style.display=isPlan?'block':'none';document.getElementById('mapPanel').style.display=isPlan?'none':'block';document.getElementById('tabPlan').classList.toggle('active',isPlan);document.getElementById('tabGPS').classList.toggle('active',!isPlan);if(!isPlan){initMap();refreshMapSize()}}
+function startGPS(){
+ showTab('gps');const stat=document.getElementById('gpsStatus');
+ if(!navigator.geolocation){stat.textContent='GPS non supportato dal browser';return}
+ if(watchId!==null){stat.textContent=lastGps?'GPS già attivo':'GPS: in attesa di posizione';return}
+ stat.textContent='In attesa del consenso e della posizione…';
+ const btn=document.getElementById('startGPS');btn.textContent='📍 GPS in attesa…';
+ watchId=navigator.geolocation.watchPosition(pos=>{
+  const xy=[pos.coords.latitude,pos.coords.longitude];lastGps=xy;
+  if(map){
+   const first=!userMarker;
+   if(first){userMarker=L.circleMarker(xy,{radius:9,color:'white',weight:3,fillColor:'#156cf4',fillOpacity:1}).addTo(map).bindPopup('La tua posizione GPS');accuracyCircle=L.circle(xy,{radius:pos.coords.accuracy,color:'#2e8be7',weight:1,fillColor:'#3399ff',fillOpacity:.10}).addTo(map)}
+   else{userMarker.setLatLng(xy);accuracyCircle.setLatLng(xy).setRadius(pos.coords.accuracy)}
+   // Non ricaricare la mappa per ogni piccola oscillazione del GPS.
+   if(first)map.setView(xy,pos.coords.accuracy>90?17:18);
+   else if(!map.getBounds().pad(-.25).contains(xy))map.panTo(xy,{animate:false});
+   refreshMapSize();
+  }
+  btn.textContent='📍 GPS attivo';
+  stat.textContent='GPS attivo · precisione ±'+Math.round(pos.coords.accuracy)+' m';
+  document.getElementById('gpsInfo').innerHTML='<strong>Posizione GPS ricevuta</strong>Latitudine '+xy[0].toFixed(6)+', longitudine '+xy[1].toFixed(6)+'. Precisione stimata ±'+Math.round(pos.coords.accuracy)+' metri. <br><small>Il GPS resta attivo finché non premi «Interrompi GPS» o chiudi la pagina.</small>';
+ },error=>{
+  const msgs={1:'Consenso negato: verifica i permessi di posizione in Safari.',2:'Segnale GPS non disponibile.',3:'Tempo scaduto: riprova all’aperto.'};stat.textContent=msgs[error.code]||'GPS non disponibile';stopGPS(false)
+ },{enableHighAccuracy:true,maximumAge:3000,timeout:18000});
+}
 function stopGPS(update=true){if(watchId!==null){navigator.geolocation.clearWatch(watchId);watchId=null}document.getElementById('startGPS').textContent='📍 La mia posizione';if(update)document.getElementById('gpsStatus').textContent='GPS interrotto'}
 function centerVenue(){showTab('gps');map?.setView(OUTLET,17);venue?.openPopup()}
 function chooseManual(){const sel=document.getElementById('manualPlace').value;document.getElementById('manualCoords').style.display=sel==='coords'?'block':'none';if(sel==='village')centerVenue()}
 function goManualCoords(){let a=parseFloat(document.getElementById('lat').value.replace(',','.')),b=parseFloat(document.getElementById('lng').value.replace(',','.'));if(!Number.isFinite(a)||!Number.isFinite(b)||Math.abs(a)>90||Math.abs(b)>180){alert('Inserisci latitudine e longitudine valide.');return}initMap();map?.setView([a,b],18);L.marker([a,b]).addTo(map).bindPopup('Punto indicato manualmente').openPopup()}
-window.addEventListener('beforeunload',()=>stopGPS(false));window.addEventListener('resize',()=>{if(document.getElementById('planPanel').style.display!=='none' && scale<=1)fit();map?.invalidateSize()});
+window.addEventListener('beforeunload',()=>stopGPS(false));window.addEventListener('resize',()=>{if(document.getElementById('planPanel').style.display!=='none' && scale<=1)fit();refreshMapSize()});
+window.addEventListener('pageshow',refreshMapSize);
+document.addEventListener('visibilitychange',()=>{if(!document.hidden)refreshMapSize()});
 renderList();fit();
 </script>
 </body></html>
